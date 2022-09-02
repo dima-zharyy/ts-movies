@@ -1,3 +1,4 @@
+import { TMovieReviews } from "service/apiTypes";
 import {
   Container,
   List,
@@ -5,10 +6,13 @@ import {
   Author,
   Comment,
   Updated,
-} from './ReviewsList.styled';
-import PropTypes from 'prop-types';
+} from "./ReviewsList.styled";
 
-export const ReviewsList = ({ reviews }) => {
+interface IProps {
+  reviews: TMovieReviews;
+}
+
+export const ReviewsList: React.FC<IProps> = ({ reviews }) => {
   if (reviews && reviews.length === 0) {
     return (
       <Container>
@@ -25,7 +29,7 @@ export const ReviewsList = ({ reviews }) => {
             return (
               <Item key={id}>
                 <Author>
-                  {author}{' '}
+                  {author}{" "}
                   <Updated>{`- posted on ${new Date(
                     updated_at
                   ).toLocaleDateString()}`}</Updated>
@@ -37,8 +41,4 @@ export const ReviewsList = ({ reviews }) => {
       </List>
     </Container>
   );
-};
-
-ReviewsList.propTypes = {
-  reviews: PropTypes.arrayOf(PropTypes.object),
 };

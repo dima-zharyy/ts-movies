@@ -1,35 +1,36 @@
-import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { SearchBar, MoviesList, notify } from 'components';
-import { Container } from './Movies.styled';
-import { getMovies } from 'service';
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
+import { SearchBar, MoviesList, notify } from "components";
+import { Container } from "./Movies.styled";
+import { getMovies } from "service";
+import { TMovies } from "service/apiTypes";
 
-export const Movies = () => {
-  const [movies, setMovies] = useState([]);
+export const Movies: React.FC = () => {
+  const [movies, setMovies] = useState<TMovies>([]);
   const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get('query');
+  const query = searchParams.get("query");
 
   useEffect(() => {
     if (!query) {
       return;
     }
 
-    getMovies(query)
-      .then(data => {
+    getMovies<TMovies>(query)
+      .then((data) => {
         setMovies(data);
         if (data.length === 0) {
           notify(`There is no result on query: ${query}`);
         }
       })
-      .catch(error => console.log(error.message));
+      .catch((error) => console.log(error.message));
   }, [query]);
 
-  const handleSubmit = query => {
+  const handleSubmit = (query: string) => {
     setSearchParams({ query });
 
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
   };
 

@@ -5,10 +5,14 @@ import {
   Character,
   Item,
   Container,
-} from './CastList.styled';
-import PropTypes from 'prop-types';
+} from "./CastList.styled";
+import { TCast } from "service/apiTypes";
 
-export const CastList = ({ castInfo }) => {
+interface IProps {
+  castInfo: TCast | null;
+}
+
+export const CastList: React.FC<IProps> = ({ castInfo }) => {
   const imgUrl = `https://image.tmdb.org/t/p/w500/`;
   const imgPlaceholder = `https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg`;
 
@@ -40,8 +44,4 @@ export const CastList = ({ castInfo }) => {
         })}
     </List>
   );
-};
-
-CastList.propTypes = {
-  castInfo: PropTypes.arrayOf(PropTypes.object),
 };

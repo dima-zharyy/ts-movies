@@ -1,6 +1,10 @@
-import { Link, Container, Navigation, Subtitle } from './AdditionalInfo.styled';
+import { Link, Container, Navigation, Subtitle } from "./AdditionalInfo.styled";
 
-export const AdditionalInfo = ({ location }) => {
+interface IProps {
+  location: string;
+}
+
+export const AdditionalInfo: React.FC<IProps> = ({ location }) => {
   return (
     <Container>
       <Subtitle>Additional Information</Subtitle>

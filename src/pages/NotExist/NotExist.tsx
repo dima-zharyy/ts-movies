@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
-import css from './NotExists.module.css';
+import { Link } from "react-router-dom";
+import css from "./NotExists.module.css";
 
-export const NotExist = () => {
+export const NotExist: React.FC = () => {
   return (
     <section className={css.page_404}>
       <div>

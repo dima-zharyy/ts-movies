@@ -1,7 +1,10 @@
-import PropTypes from 'prop-types';
-import { List, Text, Item } from './GenresList.styled';
+import { List, Text, Item } from "./GenresList.styled";
 
-export const GenresList = ({ genres }) => {
+interface IProps {
+  genres: Array<{ id: number; name: string }>;
+}
+
+export const GenresList: React.FC<IProps> = ({ genres }) => {
   return (
     <List>
       {genres.length > 0
@@ -15,8 +18,4 @@ export const GenresList = ({ genres }) => {
         : `Sorry! There is no genres data`}
     </List>
   );
-};
-
-GenresList.propTypes = {
-  genres: PropTypes.arrayOf(PropTypes.object),
 };

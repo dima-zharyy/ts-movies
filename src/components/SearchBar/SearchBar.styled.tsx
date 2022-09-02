@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 export const Form = styled.form`
   position: fixed;
@@ -30,7 +30,7 @@ export const Button = styled.button`
   }
 `;
 
-export const Input = styled.input`
+export const Input = styled.input<{ autocomplete: string }>`
   display: inline-block;
   width: 100%;
   height: 100%;

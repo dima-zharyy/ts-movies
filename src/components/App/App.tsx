@@ -1,5 +1,5 @@
-import { Route, Routes } from 'react-router-dom';
-import { SharedHeader, Notification, globalStyle } from 'components';
+import { Route, Routes } from "react-router-dom";
+import { SharedHeader, Notification, globalStyle } from "components";
 import {
   Home,
   Movies,
@@ -7,11 +7,11 @@ import {
   Cast,
   Reviews,
   NotExist,
-} from 'helpers/lazyImportPages';
-import { Global } from '@emotion/react';
-import 'react-toastify/dist/ReactToastify.css';
+} from "helpers/lazyImportPages";
+import { Global } from "@emotion/react";
+import "react-toastify/dist/ReactToastify.css";
 
-export const App = () => {
+export const App: React.FC = () => {
   return (
     <>
       <Routes>

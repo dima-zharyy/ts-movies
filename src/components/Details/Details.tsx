@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 import {
   Wrapper,
   Container,
@@ -7,13 +7,23 @@ import {
   Text,
   Subtitle,
   BackLink,
-} from './Details.styled';
-import { GenresList, AdditionalInfo } from 'components';
-import PropTypes from 'prop-types';
+} from "./Details.styled";
+import { GenresList, AdditionalInfo } from "components";
+import { IMovieDetails } from "service/apiTypes";
 
-export const Details = ({ movieDetails }) => {
-  const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/';
+interface IProps {
+  movieDetails: IMovieDetails;
+}
+
+type CustomLocation = {
+  state: {
+    from: string;
+  };
+};
+
+export const Details: React.FC<IProps> = ({ movieDetails }) => {
+  const location = useLocation() as CustomLocation;
+  const backLinkHref = location.state?.from ?? "/";
 
   const { title, overview, vote_average, genres, poster_path } = movieDetails;
 
@@ -36,14 +46,4 @@ export const Details = ({ movieDetails }) => {
       </Wrapper>
     </Container>
   );
-};
-
-Details.propTypes = {
-  movieDetails: PropTypes.exact({
-    genres: PropTypes.arrayOf(PropTypes.object),
-    overview: PropTypes.string,
-    poster_path: PropTypes.string,
-    title: PropTypes.string,
-    vote_average: PropTypes.number,
-  }),
 };

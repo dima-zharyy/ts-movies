@@ -1,8 +1,12 @@
-import { MovieItem } from 'components';
-import { List } from './MoviesList.styled';
-import PropTypes from 'prop-types';
+import { MovieItem } from "components";
+import { TMovies } from "service/apiTypes";
+import { List } from "./MoviesList.styled";
 
-export const MoviesList = ({ movies }) => {
+interface IProps {
+  movies: TMovies;
+}
+
+export const MoviesList: React.FC<IProps> = ({ movies }) => {
   return (
     <List>
       {movies.map(({ id, poster_path, title }) => {
@@ -12,8 +16,4 @@ export const MoviesList = ({ movies }) => {
       })}
     </List>
   );
-};
-
-MoviesList.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.object),
 };

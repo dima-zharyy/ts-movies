@@ -1,10 +1,15 @@
-import { useLocation } from 'react-router-dom';
-import { Movie, Poster, Title, Item } from './MovieItem.styled';
-import PropTypes from 'prop-types';
+import { useLocation } from "react-router-dom";
+import { Movie, Poster, Title, Item } from "./MovieItem.styled";
 
-export const MovieItem = ({ id, poster_path, title }) => {
+interface IProps {
+  id: number;
+  poster_path: string;
+  title: string;
+}
+
+export const MovieItem: React.FC<IProps> = ({ id, poster_path, title }) => {
   const location = useLocation();
-  const link = location.pathname.includes('movies') ? `${id}` : `movies/${id}`;
+  const link = location.pathname.includes("movies") ? `${id}` : `movies/${id}`;
 
   const imgPlaceholder = `https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg`;
   const imgUrl = `https://image.tmdb.org/t/p/w500/${poster_path}`;
@@ -21,10 +26,4 @@ export const MovieItem = ({ id, poster_path, title }) => {
       </Movie>
     </Item>
   );
-};
-
-MovieItem.propTypes = {
-  id: PropTypes.number.isRequired,
-  poster_path: PropTypes.string,
-  title: PropTypes.string,
 };

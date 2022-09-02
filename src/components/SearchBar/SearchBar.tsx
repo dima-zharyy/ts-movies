@@ -1,27 +1,32 @@
-import { useState } from 'react';
-import { Form, Button, Input } from './SearchBar.styled';
-import { ImSearch } from 'react-icons/im';
-import PropTypes from 'prop-types';
-import { notify } from 'components';
+import React, { useState } from "react";
+import { Form, Button, Input } from "./SearchBar.styled";
+import { ImSearch } from "react-icons/im";
+import { notify } from "components";
 
-export const SearchBar = ({ onSubmit }) => {
-  const [query, setQuery] = useState('');
+interface IProps {
+  onSubmit: (query: string) => void;
+}
 
-  const handleSubmit = event => {
+export const SearchBar: React.FC<IProps> = ({ onSubmit }) => {
+  const [query, setQuery] = useState("");
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
 
-    if (query.trim() === '') {
-      notify('Please type at least one letter!');
-      setQuery('');
+    if (query.trim() === "") {
+      notify("Please type at least one letter!");
+      setQuery("");
       return;
     }
 
     onSubmit(query.toLowerCase().trim());
 
-    setQuery('');
+    setQuery("");
   };
 
-  const handleInputChange = event => {
+  const handleInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
     setQuery(event.target.value);
   };
 
@@ -40,8 +45,4 @@ export const SearchBar = ({ onSubmit }) => {
       />
     </Form>
   );
-};
-
-SearchBar.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
 };

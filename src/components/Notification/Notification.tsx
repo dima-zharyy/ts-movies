@@ -1,6 +1,6 @@
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
 
-export const Notification = () => {
+export const Notification: React.FC = () => {
   return (
     <ToastContainer
       position="top-right"
@@ -12,14 +12,14 @@ export const Notification = () => {
       pauseOnFocusLoss
       draggable
       pauseOnHover
-      style={{ top: 0, color: '#254e58' }}
+      style={{ top: 0, color: "#254e58" }}
     />
   );
 };
 
-export const notify = message => {
+export const notify = (message: string) => {
   toast.info(message, {
-    position: 'top-right',
+    position: "top-right",
     autoClose: 4000,
     hideProgressBar: true,
     closeOnClick: true,

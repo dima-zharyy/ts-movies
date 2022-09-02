@@ -1,10 +1,10 @@
-import { Suspense } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Suspense } from "react";
+import { Outlet } from "react-router-dom";
 
-import { Loader } from 'components';
-import { Menu, Link, Navigation } from './SharedHeader.styled';
+import { Loader } from "components";
+import { Menu, Link, Navigation } from "./SharedHeader.styled";
 
-export const SharedHeader = () => {
+export const SharedHeader: React.FC = () => {
   return (
     <>
       <Menu>

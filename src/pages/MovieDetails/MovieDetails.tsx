@@ -1,19 +1,20 @@
-import { Details, Loader } from 'components';
-import { useState, useEffect, Suspense } from 'react';
-import { useParams, Outlet, useNavigate } from 'react-router-dom';
-import { getDetails } from 'service';
-import { Container } from './MovieDetails.styled';
+import { Details, Loader } from "components";
+import { useState, useEffect, Suspense } from "react";
+import { useParams, Outlet, useNavigate } from "react-router-dom";
+import { getDetails } from "service";
+import { IMovieDetails } from "service/apiTypes";
+import { Container } from "./MovieDetails.styled";
 
-export const MovieDetails = () => {
-  const [movieDetails, setMovieDetails] = useState(null);
+export const MovieDetails: React.FC = () => {
+  const [movieDetails, setMovieDetails] = useState<IMovieDetails | null>(null);
   const { movieId } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
-    getDetails(movieId)
+    getDetails(movieId as string)
       .then(setMovieDetails)
-      .catch(error => {
-        navigate('/', { replace: true });
+      .catch((error) => {
+        navigate("/", { replace: true });
         console.log(error.message);
       });
   }, [movieId, navigate]);
